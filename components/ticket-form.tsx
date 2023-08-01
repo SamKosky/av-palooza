@@ -84,6 +84,12 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
           return;
         }
 
+        if (!window || !window.top) {
+          setFormState('error');
+          setErrorMsg('Window is undefined.')
+          return;
+        }
+
         const windowWidth = 600;
         const windowHeight = 700;
         // https://stackoverflow.com/a/32261263/114157

@@ -28,8 +28,7 @@ type Props = {
 export default function SponsorSection({ sponsor }: Props) {
   return (
     <>
-      <Link href="/expo">
-        <a className={styles.backlink}>
+      <Link href="/expo" className={styles.backlink}>
           <svg
             viewBox="0 0 24 24"
             width="24"
@@ -44,7 +43,6 @@ export default function SponsorSection({ sponsor }: Props) {
             <path d="M15 18l-6-6 6-6" />
           </svg>
           Back to expo
-        </a>
       </Link>
       <div className={styles.layout}>
         <iframe
@@ -81,6 +79,7 @@ export default function SponsorSection({ sponsor }: Props) {
             >
               {sponsor.callToAction}
             </a>
+            {sponsor.discord && (
             <a
               href={sponsor.discord}
               target="_blank"
@@ -90,6 +89,7 @@ export default function SponsorSection({ sponsor }: Props) {
             >
               Chat on Discord
             </a>
+            )}
           </div>
           <div className={styles.resources}>
             <h2 className={styles.heading}>Resources</h2>

@@ -30,7 +30,7 @@ const Header = () => {
     >
       <div className="flex flex-row items-center gap-2">
         <div className="block items-center">
-          {localPeer.roleName === 'viewer' ? (
+          {localPeer && localPeer.roleName === 'viewer' ? (
             <button
               onClick={leave}
               className={
@@ -44,7 +44,7 @@ const Header = () => {
 
         <div className="flex md:flex-row flex-col md:items-center align-end md:gap-2  gap-x-2">
           <div className="flex flex-row items-center align-bottom md:gap-2 gap-x-2">
-            <p className="font-semibold md:text-2xl my-0 text-sm md:leading-8 ">Demo Event</p>
+            <p className="font-semibold md:text-2xl my-0 text-sm md:leading-8 ">AV palooza</p>
             <span
               className="flex md:px-1 px-0.5 font-semibold md:text-sm text-xs rounded-sm items-center "
               style={{ backgroundColor: '#ed4c5a' }}
@@ -55,7 +55,7 @@ const Header = () => {
 
           <div className="flex  ">
             <span className="text-md leading-5 " style={{ color: '#999a99' }}>
-              9:30 pm - 10:30 pm
+              5:00 pm - 10:00 pm
             </span>
           </div>
         </div>

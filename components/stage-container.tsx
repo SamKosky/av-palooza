@@ -49,7 +49,6 @@ export default function StageContainer({ stage, allStages }: Props) {
               <iframe
                 allow="autoplay; picture-in-picture"
                 allowFullScreen
-                frameBorder="0"
                 src={`${updatedStage.stream}?autoplay=1&mute=1`}
                 title={updatedStage.name}
                 width="100%"

@@ -48,12 +48,9 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
   return (
     <div key={title} className={styles.talk}>
       {showTime && <p className={styles.time}>{startAndEndTime || <>&nbsp;</>}</p>}
-      <Link href={firstSpeakerLink}>
-        <a
-          className={cn(styles.card, {
+      <Link href={firstSpeakerLink} className={cn(styles.card, {
             [styles['is-live']]: isTalkLive
-          })}
-        >
+          })}>        
           <div className={styles['card-body']}>
             <h4 title={title} className={styles.title}>
               {title}
@@ -79,7 +76,6 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
               </h5>
             </div>
           </div>
-        </a>
       </Link>
     </div>
   );
