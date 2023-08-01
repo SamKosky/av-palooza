@@ -14,30 +14,24 @@
  * limitations under the License.
  */
 
-export const SITE_URL = 'https://demo.vercel.events';
+export const SITE_URL = 'https://av-palooza.vercel.app';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
-export const TWITTER_USER_NAME = 'vercel';
-export const BRAND_NAME = 'ACME';
-export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
-export const SITE_NAME = 'ACME Conf';
-export const META_DESCRIPTION =
-  'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created through collaboration of marketers, designers, and developers at Vercel.';
-export const SITE_DESCRIPTION =
-  'An interactive online experience by the community, free for everyone.';
-export const DATE = '01 January 2022';
-export const SHORT_DATE = 'Jan 1 - 9:00am PST';
-export const FULL_DATE = 'Jan 1st 9am Pacific Time (GMT-7)';
+export const BRAND_NAME = 'AV';
+export const SITE_NAME_MULTILINE = ['AV', 'Palooza'];
+export const SITE_NAME = 'AV Palooza';
+export const META_DESCRIPTION = '';
+export const SITE_DESCRIPTION = "A journey into the future of Australia's HealthTech ecosystem.";
+export const DATE = '21 September 2023';
+export const SHORT_DATE = 'Sep 21 - 5:00pm AEST';
+export const FULL_DATE = 'Sep 21st 5pm Australian Eastern Standard Time (GMT+10)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
-// Remove process.env.NEXT_PUBLIC_... below and replace them with
-// strings containing your own privacy policy URL and copyright holder name
-export const LEGAL_URL = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL;
-export const COPYRIGHT_HOLDER = process.env.NEXT_PUBLIC_COPYRIGHT_HOLDER;
+export const LEGAL_URL = "";
+export const COPYRIGHT_HOLDER = "Aginic Ventures";
 
-export const CODE_OF_CONDUCT =
-  'https://www.notion.so/vercel/Code-of-Conduct-Example-7ddd8d0e9c354bb597a0faed87310a78';
-export const REPO = 'https://github.com/vercel/virtual-event-starter-kit';
+export const CODE_OF_CONDUCT = 'https://aginicventures.notion.site/Code-of-Conduct-48557a4e6d454b0286a40bf598dbe02e?pvs=4';
+export const REPO = 'https://github.com/SamKosky/av-palooza';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
@@ -45,11 +39,11 @@ export const NAVIGATION = [
     route: '/stage/a'
   },
   {
-    name: 'Vercel Stage',
+    name: 'Mantel Stage',
     route: '/stage/c'
   },
   {
-    name: '100ms Stage',
+    name: 'Venture Stage',
     route: '/stage/m'
   },
   {
@@ -64,10 +58,10 @@ export const NAVIGATION = [
     name: 'Expo',
     route: '/expo'
   },
-  {
-    name: 'Jobs',
-    route: '/jobs'
-  }
+  // {
+  //   name: 'Jobs',
+  //   route: '/jobs'
+  // }
 ];
 
 export type TicketGenerationState = 'default' | 'loading';

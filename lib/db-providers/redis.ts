@@ -18,10 +18,11 @@ import { nanoid } from 'nanoid';
 import Redis from 'ioredis';
 
 const redis =
-  process.env.REDIS_PORT && process.env.REDIS_URL && process.env.REDIS_EMAIL_TO_ID_SECRET
+  process.env.REDIS_PORT && process.env.REDIS_URL && process.env.EMAIL_TO_ID_SECRET
     ? new Redis({
         port: parseInt(process.env.REDIS_PORT || '', 10),
         host: process.env.REDIS_URL,
+        username: "default",
         password: process.env.REDIS_PASSWORD,
         tls:
           process.env.REDIS_SSL_ENABLED && process.env.REDIS_SSL_ENABLED != 'false' ? {} : undefined
@@ -59,7 +60,11 @@ export async function createUser(id: string, email: string): Promise<ConfUser> {
 }
 
 export async function getTicketNumberByUserId(id: string): Promise<string | null> {
-  return await redis!.hget(`id:${id}`, 'ticketNumber');
+  if (!redis) {
+    throw new Error("redis has not been instantiated!")
+  }
+
+  return await redis.hget(`id:${id}`, 'ticketNumber');
 }
 
 export async function createGitHubUser(user: any): Promise<string> {

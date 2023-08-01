@@ -9,6 +9,9 @@ const Participants = () => {
   const inviteePeers = useHMSStore(selectPeersByRole('invitee'));
   const viewerPeers = useHMSStore(selectPeersByRole('viewer'));
   const localPeer = useHMSStore(selectLocalPeer);
+
+  if (!localPeer) return null
+
   return (
     <div className="h-full p-4 overflow-y-scroll text-foreground">
       {backstagePeers.length > 0 && localPeer.roleName === 'backstage' ? (

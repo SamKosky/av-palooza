@@ -17,7 +17,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Error from 'next/error';
 import Head from 'next/head';
-import { SkipNavContent } from '@reach/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
 
 import Page from '@components/page';
@@ -44,7 +43,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
         url: `${SITE_URL}/tickets/${username}`
       }
     : {
-        title: 'Ticket Demo - Virtual Event Starter Kit',
+        title: `Ticket - ${SITE_NAME}`,
         description: META_DESCRIPTION,
         image: `/api/ticket-images/${usernameFromParams}`,
         url: `${SITE_URL}/tickets/${usernameFromParams}`
@@ -55,7 +54,6 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
-      <SkipNavContent />
       <ConfContent
         defaultUserData={{
           username: username || undefined,

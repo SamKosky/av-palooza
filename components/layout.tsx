@@ -17,7 +17,6 @@
 import Link from 'next/link';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import { SkipNavContent } from '@reach/skip-nav';
 import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
@@ -54,11 +53,8 @@ export default function Layout({
           <header className={cn(styles.header)}>
             <div className={styles['header-logos']}>
               <MobileMenu key={router.asPath} />
-              <Link href="/">
-                {/* eslint-disable-next-line */}
-                <a className={styles.logo}>
-                  <Logo />
-                </a>
+              <Link href="/" className={styles.logo}>
+                <Logo />                
               </Link>
             </div>
             <div className={styles.tabs}>
@@ -75,8 +71,7 @@ export default function Layout({
               ))}
             </div>
 
-            {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
-            activeRoute === '/' ? (
+            {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ? (
               <div className={cn(styles['header-right'])}>
                 {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
               </div>
@@ -85,10 +80,9 @@ export default function Layout({
             )}
           </header>
         )}
-        <ViewSource />
+        {/* <ViewSource /> */}
         <div className={styles.page}>
           <main className={styles.main} style={layoutStyles}>
-            <SkipNavContent />
             <div className={cn(styles.full, className)}>{children}</div>
           </main>
           {!activeRoute.startsWith('/stage') && <Footer />}

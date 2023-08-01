@@ -18,7 +18,7 @@ import cn from 'classnames';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants';
+import { SITE_NAME, SITE_URL } from '@lib/constants';
 
 type Meta = {
   title: string | null;
@@ -35,7 +35,9 @@ type Props = {
 
 export default function Page({ meta, children, fullViewport = false }: Props) {
   const router = useRouter();
-  const image = meta.image || '/twitter-card.png';
+  // TODO: add custom image
+  const image = meta.image;
+  // const image = meta.image || '/twitter-card.png';
   const title = meta.title || SITE_NAME;
   const url = meta.url || `${SITE_URL}${router.asPath}`;
   const description = meta.description || SITE_NAME;
@@ -48,8 +50,8 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
         <meta property="og:url" content={url} />
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
-        <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />
-        <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+        {/* <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />
+        <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} /> */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

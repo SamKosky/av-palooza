@@ -15,7 +15,7 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import screenshot from '@lib/screenshot';
+// import screenshot from '@lib/screenshot';
 import { SITE_URL, SAMPLE_TICKET_NUMBER } from '@lib/constants';
 import { getUserByUsername } from '@lib/db-api';
 
@@ -36,14 +36,15 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
       url = `${url}&name=${encodeURIComponent(name)}`;
     }
 
-    const file = await screenshot(url);
+    // const file = await screenshot(url);
     res.setHeader('Content-Type', `image/png`);
     res.setHeader(
       'Cache-Control',
       `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
     );
     res.statusCode = 200;
-    res.end(file);
+    res.json(JSON.stringify({ url }))
+    // res.end(file);
   } else {
     res.status(404).send('Not Found');
   }
