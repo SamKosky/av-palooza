@@ -14,7 +14,7 @@ const ActiveSpeaker = () => {
   const [activeSpeaker, setActiveSpeaker] = useState(localPeer);
   const dominantSpeaker = useHMSStore(selectDominantSpeaker);
 
-  const peerFilter = (dominantSpeaker: HMSPeer) => {
+  const peerFilter = (dominantSpeaker?: HMSPeer) => {
     if (dominantSpeaker) {
       setActiveSpeaker(dominantSpeaker);
     }
@@ -23,7 +23,7 @@ const ActiveSpeaker = () => {
   const prevPeer = usePrevious(activeSpeaker);
 
   const getPeer = useCallback(() => {
-    if (localPeer.roleName === 'viewer') {
+    if (localPeer && localPeer.roleName === 'viewer') {
       return prevPeer || localPeer;
     } else {
       return localPeer;
@@ -36,9 +36,10 @@ const ActiveSpeaker = () => {
 
   const { pagesWithTiles, ref } = useVideoList({
     maxTileCount: 1,
-    peers: [activeSpeaker],
+    peers: activeSpeaker ? [activeSpeaker] : [],
     aspectRatio: hmsConfig.aspectRatio
   });
+
   return (
     <div
       className="py-2"
@@ -59,7 +60,7 @@ const ActiveSpeaker = () => {
 
 export default ActiveSpeaker;
 
-function usePrevious(value: HMSPeer): HMSPeer | undefined {
+function usePrevious(value?: HMSPeer): HMSPeer | undefined {
   const ref = useRef<HMSPeer>();
   useEffect(() => {
     ref.current = value;

@@ -40,11 +40,11 @@ const VideoList = () => {
     if (dominantSpeaker) {
       peerFilter(dominantSpeaker);
     } else {
-      if (localPeer.roleName === 'viewer' && stagePeers.length > 0) {
+      if (localPeer?.roleName === 'viewer' && stagePeers.length > 0) {
         setActiveSpeaker(stagePeers[0]);
       }
     }
-  }, [dominantSpeaker, stagePeers, localPeer.roleName]);
+  }, [dominantSpeaker, stagePeers, localPeer?.roleName]);
   const isSomeoneScreenSharing = useHMSStore(selectIsSomeoneScreenSharing);
 
   return (
@@ -55,7 +55,7 @@ const VideoList = () => {
       >
         {renderPeers.length > 0 ? (
           <>
-            {isActiveSpeakerModeOn || isSomeoneScreenSharing ? (
+            {activeSpeaker && (isActiveSpeakerModeOn || isSomeoneScreenSharing) ? (
               <ActiveSpeaker allPeers={renderPeers} activePeer={activeSpeaker} />
             ) : (
               <NonActiveSpeakerView peers={renderPeers} />
@@ -66,7 +66,7 @@ const VideoList = () => {
         )}
       </div>
       <RoleChangeDialog />
-      <MobileView allPeers={renderPeers} activePeer={activeSpeaker} />
+      {activeSpeaker && <MobileView allPeers={renderPeers} activePeer={activeSpeaker} />}
     </>
   );
 };
