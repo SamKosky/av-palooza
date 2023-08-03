@@ -25,7 +25,7 @@ jobs:
       - name: Install browsers
         run: npx playwright install --with-deps
       - name: Run your tests
-        run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npx playwright test --project="${{ matrix.project }}" --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - uses: actions/upload-artifact@v3
         if: always()
         with:
