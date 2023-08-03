@@ -55,11 +55,11 @@ export const useDevices = (): useDevicesResult => {
     [DeviceType.videoInput]: sdkSelectedDevices.videoInputDeviceId
   };
 
-  if (!isAllowedToPublish.video && (!allDevices.videoInput || allDevices.videoInput.length === 0)) {
+  if (!isAllowedToPublish.video && !allDevices.videoInput) {
     delete allDevices[DeviceType.videoInput];
     delete selectedDeviceIDs[DeviceType.videoInput];
   }
-  if (!isAllowedToPublish.audio && (!allDevices.audioInput || allDevices.audioInput.length === 0)) {
+  if (!isAllowedToPublish.audio && !allDevices.audioInput) {
     delete allDevices[DeviceType.audioInput];
     delete selectedDeviceIDs[DeviceType.audioInput];
   }
