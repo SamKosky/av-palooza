@@ -12,7 +12,8 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "license": "addlicense -l apache -c 'Vercel Inc.' components/**/* lib/**/* pages/**/* styles/**/* *.ts *.js"
+    "license": "addlicense -l apache -c 'Vercel Inc.' components/**/* lib/**/* pages/**/* styles/**/* *.ts *.js",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@100mslive/react-icons": "^0.8.10",
@@ -43,6 +44,7 @@
     "vanilla-tilt": "1.7.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.36.2",
     "@types/classnames": "2.2.11",
     "@types/cookie": "0.4.0",
     "@types/htmlescape": "1.1.1",
