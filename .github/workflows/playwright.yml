@@ -5,16 +5,10 @@ on:
 
 jobs:
   e2e-tests:
-    name: 'Playwright Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}'
+    name: 'Playwright Tests'
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
-    timeout-minutes: 60
+    timeout-minutes: 5
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        project: ['Desktop Chrome', 'Desktop Firefox', 'Desktop Safari']
-        shardIndex: [1, 2, 3]
-        shardTotal: [3]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -35,7 +29,7 @@ jobs:
       - name: Install browsers
         run: npx playwright install --with-deps
       - name: Run your tests
-        run: npx playwright test --project="${{ matrix.project }}" --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --trace=on
+        run: npx playwright test --trace=on
         env:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
       - uses: actions/upload-artifact@v3
